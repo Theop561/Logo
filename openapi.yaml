@@ -1,0 +1,42 @@
+
+# CMS OPenAPI
+
+openapi: 3.0.3
+
+info:
+  title: wicrypt
+  version: '1.2'
+  
+externalDocs:
+  description: More information about CMS API
+  url: http://mycollege.com/api
+  
+servers:
+  - url: http://localhost:44333/api
+  - url: http://localhost:{port}/stagingapi
+    variables:
+      port:
+        enum:
+          - "44333"
+          - '8990'
+        default: !!str 44333
+        
+tags:
+  - name: dashboard
+    description: Operations about Dashboards
+    
+paths:
+  dashboard:
+   summary: OPeration about Dashboards
+   get:
+     tags:
+       - dashboard
+     summary: Get all the dashboards
+     responses:
+        200:
+          description: Success
+        400:
+          description: Incorrect input
+        default:
+          description: Success
+          
